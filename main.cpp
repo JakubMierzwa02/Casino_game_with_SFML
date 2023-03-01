@@ -1,14 +1,9 @@
-#include "SFML/Graphics.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/System.hpp"
+#include "Casino.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1024, 1024), "Casino game");
-
-	window.clear();
-
-	window.display();
+	Casino casino;
+	casino.run();
 
 	return 0;
 }
