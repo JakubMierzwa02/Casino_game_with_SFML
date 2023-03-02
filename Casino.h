@@ -10,6 +10,9 @@ private:
 	// Window
 	sf::RenderWindow* window;
 
+	// Events
+	sf::Event ev;
+
 	// Initializer functions
 	void initWindow();
 
@@ -19,6 +22,8 @@ public:
 	virtual ~Casino();
 
 	// Functions
+	void pollEvents();
+
 	void update();
 	void render();
 

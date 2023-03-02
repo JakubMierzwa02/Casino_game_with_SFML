@@ -15,9 +15,18 @@ Casino::~Casino()
 	delete this->window;
 }
 
+void Casino::pollEvents()
+{
+	while (this->window->pollEvent(this->ev))
+	{
+		if (this->ev.type == sf::Event::Closed)
+			this->window->close();
+	}
+}
+
 void Casino::update()
 {
-
+	this->pollEvents();
 }
 
 void Casino::render()
