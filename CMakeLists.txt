@@ -11,6 +11,8 @@ add_executable(Casino
 main.cpp
 Casino.h
 Casino.cpp
+Phase.h
+Phase.cpp
 )
 
 # Link our executable to SFML and its dependencies
