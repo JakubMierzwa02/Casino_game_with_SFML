@@ -11,8 +11,12 @@ private:
 	// Events
 	sf::Event ev;
 
+	// Phases
+	std::stack<Phase*>* phases;
+
 	// Initializer functions
 	void initWindow();
+	void initPhase();
 
 public:
 	// Constructors / Destructors
