@@ -4,11 +4,14 @@
 #include "SFML/Window.hpp"
 #include "SFML/System.hpp"
 
+#include <iostream>
 #include <stack>
 
 class Phase
 {
 private:
+
+protected:
 	// Window
 	sf::RenderWindow* window;
 
@@ -18,7 +21,7 @@ private:
 	bool quit;
 
 public:
-	Phase(sf::RenderWindow* window, std::stack<Phase*>* phases);
+	Phase(sf::RenderWindow*, std::stack<Phase*>*);
 	virtual ~Phase();
 
 	const bool getQuit() const;

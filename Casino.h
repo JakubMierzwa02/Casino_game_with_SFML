@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Phase.h"
+#include "Poker.h"
 
 class Casino
 {
@@ -12,7 +12,7 @@ private:
 	sf::Event ev;
 
 	// Phases
-	std::stack<Phase*>* phases;
+	std::stack<Phase*> phases;
 
 	// Initializer functions
 	void initWindow();

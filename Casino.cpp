@@ -7,7 +7,7 @@ void Casino::initWindow()
 
 void Casino::initPhase()
 {
-	// this->phases.push(new Phase);
+	this->phases.push(new Poker(this->window, &this->phases));
 }
 
 Casino::Casino()
@@ -35,14 +35,14 @@ void Casino::update()
 	this->pollEvents();
 
 	// Update phases
-	if (!this->phases->empty())
+	if (!this->phases.empty())
 	{
-		this->phases->top()->update();
-		if (this->phases->top()->getQuit())
+		this->phases.top()->update();
+		if (this->phases.top()->getQuit())
 		{
-			this->phases->top()->endPhase();
-			delete this->phases->top();
-			this->phases->pop();
+			this->phases.top()->endPhase();
+			delete this->phases.top();
+			this->phases.pop();
 		}
 	}
 
@@ -58,8 +58,8 @@ void Casino::render()
 	this->window->clear();
 
 	// Render stuff
-	if (!this->phases->empty())
-		this->phases->top()->render();
+	if (!this->phases.empty())
+		this->phases.top()->render();
 
 	this->window->display();
 }

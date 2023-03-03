@@ -13,6 +13,8 @@ Casino.h
 Casino.cpp
 Phase.h
 Phase.cpp
+Poker.h
+Poker.cpp
 )
 
 # Link our executable to SFML and its dependencies
