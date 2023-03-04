@@ -13,7 +13,9 @@ Poker::~Poker()
 
 void Poker::update()
 {
-
+	// Quit phase
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+		this->endPhase();
 }
 
 void Poker::render(sf::RenderTarget* target)
