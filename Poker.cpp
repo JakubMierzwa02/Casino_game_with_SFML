@@ -62,6 +62,8 @@ void Poker::initTextures()
 	this->textures[50]->loadFromFile("Resources/Cards/king_of_hearts.png");
 	this->textures[51]->loadFromFile("Resources/Cards/ace_of_hearts.png");
 
+	this->textures[52]->loadFromFile("Resources/Cards/cardBack.png");
+
 	// Init background
 	if (!this->backgroundTex.loadFromFile("Resources/background.jpg"))
 		throw "Could not load background.jpg file";
@@ -69,11 +71,58 @@ void Poker::initTextures()
 	this->background.setScale(3.6f, 3.6f);
 }
 
+void Poker::initCards()
+{
+	int i = 0;
+	
+	// Create cards
+	for (int j = 2; j <= 14; j++)
+	{
+		this->cards.push_back(new Card(*this->textures[i], j, CLUBS));
+		i++;
+	}
+	for (int j = 2; j <= 14; j++)
+	{
+		this->cards.push_back(new Card(*this->textures[i], j, SPADES));
+		i++;
+	}
+	for (int j = 2; j <= 14; j++)
+	{
+		this->cards.push_back(new Card(*this->textures[i], j, DIAMONDS));
+		i++;
+	}
+	for (int j = 2; j <= 14; j++)
+	{
+		this->cards.push_back(new Card(*this->textures[i], j, HEARTS));
+		i++;
+	}
+}
+
+void Poker::initCardBacks()
+{
+	for (size_t i = 0; i < 5; i++)
+	{
+		this->cardBacks.push_back(sf::Sprite(*this->textures[52]));
+	}
+	this->cardBacks[0].setScale(1.4f, 1.4f);
+	this->cardBacks[0].setPosition(210.f, 530.f);
+
+	float pos = 210.f + this->cardBacks[0].getGlobalBounds().width + 100.f;
+	for (size_t i = 1; i < 5; i++)
+	{
+		this->cardBacks[i].setScale(1.4f, 1.4f);
+		this->cardBacks[i].setPosition(pos, 530.f);
+		pos += this->cardBacks[0].getGlobalBounds().width + 100.f;
+	}
+}
+
 
 Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 	: Phase(window, phases)
 {
 	this->initTextures();
+	this->initCards();
+	this->initCardBacks();
 }
 
 Poker::~Poker()
@@ -81,6 +130,11 @@ Poker::~Poker()
 	for (size_t i = 0; i < this->textures.size(); i++)
 	{
 		delete this->textures[i];
+	}
+
+	for (size_t i = 0; i < this->cards.size(); i++)
+	{
+		delete this->cards[i];
 	}
 }
 
@@ -98,4 +152,10 @@ void Poker::render(sf::RenderTarget* target)
 		target = this->window;
 
 	target->draw(this->background);
+
+	// Render cardbacks
+	for (size_t i = 0; i < this->cardBacks.size(); i++)
+	{
+		target->draw(this->cardBacks[i]);
+	}
 }
