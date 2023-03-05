@@ -10,6 +10,7 @@ void Casino::initPhase()
 	this->phases.push(new Poker(this->window, &this->phases));
 }
 
+
 Casino::Casino()
 {
 	this->initWindow();
@@ -20,6 +21,7 @@ Casino::~Casino()
 {
 	delete this->window;
 }
+
 
 void Casino::pollEvents()
 {

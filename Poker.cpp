@@ -69,6 +69,7 @@ void Poker::initTextures()
 	this->background.setScale(3.6f, 3.6f);
 }
 
+
 Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 	: Phase(window, phases)
 {
@@ -77,8 +78,12 @@ Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 
 Poker::~Poker()
 {
-	
+	for (size_t i = 0; i < this->textures.size(); i++)
+	{
+		delete this->textures[i];
+	}
 }
+
 
 void Poker::update()
 {

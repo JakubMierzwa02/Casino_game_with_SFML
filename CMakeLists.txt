@@ -15,6 +15,8 @@ Phase.h
 Phase.cpp
 Poker.h
 Poker.cpp
+Card.h
+Card.cpp
 )
 
 # Link our executable to SFML and its dependencies
