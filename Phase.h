@@ -5,6 +5,7 @@
 #include "SFML/System.hpp"
 
 #include <iostream>
+#include <vector>
 #include <stack>
 
 class Phase

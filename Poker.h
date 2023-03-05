@@ -5,6 +5,15 @@
 class Poker : public Phase
 {
 private:
+	// Background
+	sf::Sprite background;
+
+	// Textures
+	std::vector<sf::Texture*> textures;
+	sf::Texture backgroundTex;
+
+	// Initializer functions
+	void initTextures();
 
 
 public:
