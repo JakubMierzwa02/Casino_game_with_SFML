@@ -17,6 +17,8 @@ Poker.h
 Poker.cpp
 Card.h
 Card.cpp
+Hand.h
+Hand.cpp
 )
 
 # Link our executable to SFML and its dependencies
