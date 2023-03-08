@@ -19,6 +19,8 @@ Card.h
 Card.cpp
 Hand.h
 Hand.cpp
+Deal.h
+Deal.cpp
 )
 
 # Link our executable to SFML and its dependencies
