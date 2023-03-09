@@ -13,8 +13,15 @@ private:
 
 	// Cards
 	std::vector<Card*> cards;
+	std::vector<Card*> handCards;
+	std::vector<Card> usedCards;
+
+	// Logic
+	int counter;
 
 	// Initializer functions
+	void initVariables();
+	void initHandCards();
 	void initHand();
 
 public:
@@ -22,6 +29,7 @@ public:
 	virtual ~Deal();
 
 	// Functions
+	void updateButtons();
 	void updateHand();
 	void update();
 	void render(sf::RenderTarget*);
