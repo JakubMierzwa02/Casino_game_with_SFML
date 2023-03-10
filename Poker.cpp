@@ -116,6 +116,11 @@ void Poker::initCardBacks()
 	}
 }
 
+void Poker::initDeal()
+{
+	this->deal = new Deal(this->window, this->cards);
+}
+
 
 Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 	: Phase(window, phases)

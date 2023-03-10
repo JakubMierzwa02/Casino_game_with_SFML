@@ -29,6 +29,15 @@ void Hand::sortHand()
 				std::swap(this->copyCards[j], this->copyCards[j + 1]);
 }
 
+bool Hand::jacks_or_better()
+{
+	for (size_t i = 0; i < this->cards.size(); i++)
+		for (size_t j = i + 1; j < this->cards.size(); j++)
+			if (this->cards[i]->getValue() >= 11 && (this->cards[i]->getValue() == this->cards[j]->getValue()))
+				return true;
+	return false;
+}
+
 bool Hand::two_pairs()
 {
 	int pairs = 0;

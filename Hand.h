@@ -22,6 +22,7 @@ public:
 	void sortHand();
 
 	// Check poker hands
+	bool jacks_or_better();
 	bool two_pairs();
 	bool three_of_a_kind();
 	bool straight();

@@ -4,6 +4,9 @@
 #include "SFML/Window.hpp"
 #include "SFML/System.hpp"
 
+#include <iostream>
+#include <vector>
+
 enum Color { CLUBS = 0, SPADES = 1, DIAMONDS = 2, HEARTS = 3 };
 
 class Card

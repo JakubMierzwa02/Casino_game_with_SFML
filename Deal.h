@@ -28,6 +28,8 @@ public:
 	Deal(sf::RenderWindow*, std::vector<Card*>);
 	virtual ~Deal();
 
+	const int checkHand();
+
 	// Functions
 	void updateButtons();
 	void updateHand();
