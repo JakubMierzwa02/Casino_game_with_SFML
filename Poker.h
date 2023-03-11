@@ -41,6 +41,7 @@ public:
 	bool canPlay();
 
 	// Functions
+	void updateButtons();
 	void update();
 	void render(sf::RenderTarget*);
 };

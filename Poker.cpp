@@ -162,14 +162,22 @@ bool Poker::canPlay()
 	return true;
 }
 
-void Poker::update()
+void Poker::updateButtons()
 {
 	// Deal
 	if (this->canPlay() && sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		if (!this->change && !this->check)
 		{
-			this->initDeal();
+			/*
+				=================
+			*/
+			// BUG!!!!
+			//this->initDeal();
+			// BUG!!!!
+			/*
+			*	==================
+			*/
 			this->counter = 0;
 			this->change = true;
 		}
@@ -193,12 +201,17 @@ void Poker::update()
 		}
 	}
 
-	if (this->change)
-		this->deal->update();
-
 	// Quit phase
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		this->endPhase();
+}
+
+void Poker::update()
+{
+	this->updateButtons();
+
+	if (this->change)
+		this->deal->update();
 }
 
 void Poker::render(sf::RenderTarget* target)
