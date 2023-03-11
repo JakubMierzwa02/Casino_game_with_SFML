@@ -5,6 +5,8 @@
 #include "SFML/System.hpp"
 
 #include <iostream>
+#include <ctime>
+#include <map>
 #include <vector>
 #include <stack>
 

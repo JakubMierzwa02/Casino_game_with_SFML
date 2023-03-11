@@ -1,5 +1,12 @@
 #include "Poker.h"
 
+void Poker::initVariables()
+{
+	this->counter = 30;
+	this->change = false;
+	this->check = false;
+}
+
 void Poker::initTextures()
 {
 	for (int i = 0; i < 53; i++)
@@ -125,6 +132,7 @@ void Poker::initDeal()
 Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 	: Phase(window, phases)
 {
+	this->initVariables();
 	this->initTextures();
 	this->initCards();
 	this->initCardBacks();
@@ -144,8 +152,50 @@ Poker::~Poker()
 }
 
 
+bool Poker::canPlay()
+{
+	if (this->counter < 30)
+	{
+		this->counter++;
+		return false;
+	}
+	return true;
+}
+
 void Poker::update()
 {
+	// Deal
+	if (this->canPlay() && sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		if (!this->change && !this->check)
+		{
+			this->initDeal();
+			this->counter = 0;
+			this->change = true;
+		}
+		else if (this->change && !this->check)
+		{
+			// Change hand
+			this->deal->updateHand();
+
+			this->deal->checkHand();
+			this->counter = 0;
+			this->check = true;
+			this->change = false;
+		}
+
+		// Deal ends
+		else if (this->check)
+		{
+			delete this->deal;
+			this->counter = 0;
+			this->check = false;
+		}
+	}
+
+	if (this->change)
+		this->deal->update();
+
 	// Quit phase
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		this->endPhase();
@@ -159,8 +209,16 @@ void Poker::render(sf::RenderTarget* target)
 	target->draw(this->background);
 
 	// Render cardbacks
-	for (size_t i = 0; i < this->cardBacks.size(); i++)
+	if (!this->change && !this->check)
 	{
-		target->draw(this->cardBacks[i]);
+		for (size_t i = 0; i < this->cardBacks.size(); i++)
+		{
+			target->draw(this->cardBacks[i]);
+		}
+	}
+
+	else if (this->deal && (this->change || this->check))
+	{
+		this->deal->render(target);
 	}
 }

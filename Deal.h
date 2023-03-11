@@ -16,6 +16,9 @@ private:
 	std::vector<Card*> handCards;
 	std::vector<Card> usedCards;
 
+	// Buttons
+	std::vector<bool> isChecked;
+
 	// Logic
 	int counter;
 
@@ -28,7 +31,9 @@ public:
 	Deal(sf::RenderWindow*, std::vector<Card*>);
 	virtual ~Deal();
 
-	const int checkHand();
+	void checkHand();
+
+	bool canPress();
 
 	// Functions
 	void updateButtons();

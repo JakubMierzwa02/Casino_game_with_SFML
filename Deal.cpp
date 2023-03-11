@@ -3,6 +3,11 @@
 void Deal::initVariables()
 {
 	this->counter = 10;
+
+	for (size_t i = 0; i < 5; i++)
+	{
+		this->isChecked.push_back(false);
+	}
 }
 
 void Deal::initHandCards()
@@ -47,11 +52,11 @@ Deal::Deal(sf::RenderWindow* window, std::vector<Card*> cards)
 
 Deal::~Deal()
 {
-	//delete this->hand;
+	delete this->hand;
 }
 
 
-const int Deal::checkHand()
+void Deal::checkHand()
 {
 	if (this->hand->straight_flush())
 	{
@@ -89,24 +94,114 @@ const int Deal::checkHand()
 	{
 		std::cout << "High card" << '\n';
 	}
+}
 
-	return;
+bool Deal::canPress()
+{
+	if (this->counter < 20)
+	{
+		this->counter++;
+		return false;
+	}
+	return true;
 }
 
 void Deal::updateButtons()
 {
-
+	if (this->canPress())
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+		{
+			if (!this->isChecked[0])
+			{
+				this->isChecked[0] = true;
+			}
+			else
+			{
+				this->isChecked[0] = false;
+			}
+			this->counter = 0;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+		{
+			if (!this->isChecked[1])
+			{
+				this->isChecked[1] = true;
+			}
+			else
+			{
+				this->isChecked[1] = false;
+			}
+			this->counter = 0;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+		{
+			if (!this->isChecked[2])
+			{
+				this->isChecked[2] = true;
+			}
+			else
+			{
+				this->isChecked[2] = false;
+			}
+			this->counter = 0;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+		{
+			if (!this->isChecked[3])
+			{
+				this->isChecked[3] = true;
+			}
+			else
+			{
+				this->isChecked[3] = false;
+			}
+			this->counter = 0;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+		{
+			if (!this->isChecked[4])
+			{
+				this->isChecked[4] = true;
+			}
+			else
+			{
+				this->isChecked[4] = false;
+			}
+			this->counter = 0;
+		}
+	}
 }
 
 void Deal::updateHand()
 {
+	delete this->hand;
 
+	for (size_t i = 0; i < 5; i++)
+	{
+		if (!this->isChecked[i])
+		{
+			this->handCards[i] = this->cards[std::rand() % 51 + 1];
+			this->usedCards.push_back(*this->handCards[i]);
+			for (size_t j = 0; j < this->usedCards.size() - 1; j++)
+			{
+				if ((this->handCards[i]->getValue() == this->usedCards[j].getValue())
+					&& (this->handCards[i]->getColor() == this->usedCards[j].getColor()))
+				{
+					this->handCards[i] = NULL;
+					i--;
+					break;
+				}
+			}
+		}
+	}
+
+	this->initHand();
 }
 
 void Deal::update()
 {
 	this->updateButtons();
-	this->updateHand();
 }
 
 void Deal::render(sf::RenderTarget* target)

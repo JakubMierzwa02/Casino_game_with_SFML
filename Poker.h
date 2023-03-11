@@ -21,16 +21,26 @@ private:
 	// Deal
 	Deal* deal;
 
+	// Logic
+	int counter;
+	bool change;
+	bool check;
+
 	// Initializer functions
+	void initVariables();
 	void initTextures();
 	void initCards();
 	void initCardBacks();
 	void initDeal();
 
 public:
+	// Constructors / Destructors
 	Poker(sf::RenderWindow*, std::stack<Phase*>*);
 	virtual ~Poker();
 
+	bool canPlay();
+
+	// Functions
 	void update();
 	void render(sf::RenderTarget*);
 };

@@ -2,6 +2,8 @@
 
 void Casino::initWindow()
 {
+	srand(time(NULL));
+
 	this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Casino game");
 }
 
