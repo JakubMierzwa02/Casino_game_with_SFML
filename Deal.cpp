@@ -43,8 +43,8 @@ void Deal::initHand()
 
 
 Deal::Deal(sf::RenderWindow* window, std::vector<Card*> cards)
+	: window(window), cards(cards)
 {
-	this->window = window;
 	this->initVariables();
 	this->initHandCards();
 	this->initHand();

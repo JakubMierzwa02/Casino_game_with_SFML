@@ -169,15 +169,8 @@ void Poker::updateButtons()
 	{
 		if (!this->change && !this->check)
 		{
-			/*
-				=================
-			*/
-			// BUG!!!!
-			//this->initDeal();
-			// BUG!!!!
-			/*
-			*	==================
-			*/
+
+			this->initDeal();
 			this->counter = 0;
 			this->change = true;
 		}

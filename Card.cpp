@@ -15,6 +15,7 @@ Card::~Card()
 
 }
 
+
 const int& Card::getValue() const
 {
 	return this->value;
