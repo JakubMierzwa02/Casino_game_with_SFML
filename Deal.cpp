@@ -98,7 +98,7 @@ void Deal::checkHand()
 
 bool Deal::canPress()
 {
-	if (this->counter < 20)
+	if (this->counter < 50)
 	{
 		this->counter++;
 		return false;

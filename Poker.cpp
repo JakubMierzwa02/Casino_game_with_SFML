@@ -154,7 +154,7 @@ Poker::~Poker()
 
 bool Poker::canPlay()
 {
-	if (this->counter < 30)
+	if (this->counter < 100)
 	{
 		this->counter++;
 		return false;
