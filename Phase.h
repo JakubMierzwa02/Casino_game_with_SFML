@@ -21,6 +21,11 @@ protected:
 	// Phases
 	std::stack<Phase*>* phases;
 
+	// Mouse positions
+	sf::Vector2i mousePosScreen;
+	sf::Vector2i mousePosWindow;
+	sf::Vector2f mousePosView;
+
 	bool quit;
 
 public:
@@ -31,6 +36,7 @@ public:
 
 	void endPhase();
 
+	void updateMousePositions();
 	virtual void update() = 0;
 	virtual void render(sf::RenderTarget* target = nullptr) = 0;
 };

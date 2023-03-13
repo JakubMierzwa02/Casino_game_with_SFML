@@ -201,6 +201,7 @@ void Poker::updateButtons()
 
 void Poker::update()
 {
+	this->updateMousePositions();
 	this->updateButtons();
 
 	if (this->change)

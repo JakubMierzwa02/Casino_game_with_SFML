@@ -21,3 +21,10 @@ void Phase::endPhase()
 {
 	this->quit = true;
 }
+
+void Phase::updateMousePositions()
+{
+	this->mousePosScreen = sf::Mouse::getPosition();
+	this->mousePosWindow = sf::Mouse::getPosition(*this->window);
+	this->mousePosView = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
+}

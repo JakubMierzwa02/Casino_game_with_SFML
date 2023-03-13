@@ -106,6 +106,13 @@ bool Deal::canPress()
 	return true;
 }
 
+void Deal::updateMousePos()
+{
+	this->mousePosScreen = sf::Mouse::getPosition();
+	this->mousePosWindow = sf::Mouse::getPosition(*this->window);
+	this->mousePosView = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
+}
+
 void Deal::updateButtons()
 {
 	if (this->canPress())
@@ -201,6 +208,7 @@ void Deal::updateHand()
 
 void Deal::update()
 {
+	this->updateMousePos();
 	this->updateButtons();
 }
 

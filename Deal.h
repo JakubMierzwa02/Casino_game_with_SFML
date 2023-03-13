@@ -8,6 +8,11 @@ private:
 	// Resources
 	sf::RenderWindow* window;
 
+	// Mouse positions
+	sf::Vector2i mousePosScreen;
+	sf::Vector2i mousePosWindow;
+	sf::Vector2f mousePosView;
+
 	// Hand
 	Hand* hand;
 
@@ -36,6 +41,7 @@ public:
 	bool canPress();
 
 	// Functions
+	void updateMousePos();
 	void updateButtons();
 	void updateHand();
 	void update();

@@ -4,6 +4,8 @@
 #include "SFML/System.hpp"
 #include "SFML/Window.hpp"
 
+enum button_states { BTN_IDLE = 0, BTN_HOVER, BTN_ACTIVE, BTN_CHECKED };
+
 class Button
 {
 private:
@@ -29,6 +31,6 @@ public:
 	void checked();
 
 	// Functions
-	void update();
+	void update(sf::Vector2f);
 	void render(sf::RenderTarget*);
 };
