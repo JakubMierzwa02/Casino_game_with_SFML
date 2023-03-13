@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Hand.h"
+#include "Button.h"
 
 class Deal
 {

@@ -123,6 +123,17 @@ void Poker::initCardBacks()
 	}
 }
 
+void Poker::initButtons()
+{
+	this->buttons["DEAL"] = new Button(50.f, this->window->getSize().y - 132.f, 150.f, 92.f,
+		this->font, "Deal",
+		sf::Color(207, 27, 27), sf::Color(171, 32, 32), sf::Color(128, 33, 33));
+
+	this->buttons["EXIT"] = new Button(250.f, this->window->getSize().y - 132.f, 150.f, 92.f,
+		this->font, "Exit",
+		sf::Color(207, 27, 27), sf::Color(171, 32, 32), sf::Color(128, 33, 33));
+}
+
 void Poker::initDeal()
 {
 	this->deal = new Deal(this->window, this->cards);
@@ -136,6 +147,7 @@ Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 	this->initTextures();
 	this->initCards();
 	this->initCardBacks();
+	this->initButtons();
 }
 
 Poker::~Poker()
@@ -164,8 +176,13 @@ bool Poker::canPlay()
 
 void Poker::updateButtons()
 {
+	for (auto& it : this->buttons)
+	{
+		it.second->update(this->mousePosView);
+	}
+
 	// Deal
-	if (this->canPlay() && sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	if (this->canPlay() && this->buttons["DEAL"]->isPressed())
 	{
 		if (!this->change && !this->check)
 		{
@@ -195,7 +212,7 @@ void Poker::updateButtons()
 	}
 
 	// Quit phase
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+	if (this->buttons["EXIT"]->isPressed())
 		this->endPhase();
 }
 
@@ -208,12 +225,22 @@ void Poker::update()
 		this->deal->update();
 }
 
+void Poker::renderButtons(sf::RenderTarget* target)
+{
+	for (auto& it : this->buttons)
+	{
+		it.second->render(target);
+	}
+}
+
 void Poker::render(sf::RenderTarget* target)
 {
 	if (!target)
 		target = this->window;
 
 	target->draw(this->background);
+
+	this->renderButtons(target);
 
 	// Render cardbacks
 	if (!this->change && !this->check)
