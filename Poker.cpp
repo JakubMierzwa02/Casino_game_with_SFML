@@ -78,6 +78,12 @@ void Poker::initTextures()
 	this->background.setScale(3.6f, 3.6f);
 }
 
+void Poker::initFont()
+{
+	if (!this->font.loadFromFile("Resources/Fonts/font.ttf"))
+		throw "Could not load font.ttf file";
+}
+
 void Poker::initCards()
 {
 	int i = 0;
@@ -136,7 +142,7 @@ void Poker::initButtons()
 
 void Poker::initDeal()
 {
-	this->deal = new Deal(this->window, this->cards);
+	this->deal = new Deal(this->window, this->cards, this->font);
 }
 
 
@@ -145,6 +151,7 @@ Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 {
 	this->initVariables();
 	this->initTextures();
+	this->initFont();
 	this->initCards();
 	this->initCardBacks();
 	this->initButtons();
@@ -160,6 +167,11 @@ Poker::~Poker()
 	for (size_t i = 0; i < this->cards.size(); i++)
 	{
 		delete this->cards[i];
+	}
+
+	for (auto it = this->buttons.begin(); it != this->buttons.end(); ++it)
+	{
+		delete it->second;
 	}
 }
 

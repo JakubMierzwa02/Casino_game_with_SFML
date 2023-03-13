@@ -4,7 +4,7 @@ void Casino::initWindow()
 {
 	srand(time(NULL));
 
-	this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Casino game");
+	this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Casino game", sf::Style::Fullscreen);
 }
 
 void Casino::initPhase()

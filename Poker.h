@@ -35,6 +35,7 @@ private:
 	// Initializer functions
 	void initVariables();
 	void initTextures();
+	void initFont();
 	void initCards();
 	void initCardBacks();
 	void initButtons();

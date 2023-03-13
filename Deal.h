@@ -8,6 +8,7 @@ class Deal
 private:
 	// Resources
 	sf::RenderWindow* window;
+	sf::Font font;
 
 	// Mouse positions
 	sf::Vector2i mousePosScreen;
@@ -23,6 +24,7 @@ private:
 	std::vector<Card> usedCards;
 
 	// Buttons
+	std::map<std::string, Button*> buttons;
 	std::vector<bool> isChecked;
 
 	// Logic
@@ -32,9 +34,10 @@ private:
 	void initVariables();
 	void initHandCards();
 	void initHand();
+	void initButtons();
 
 public:
-	Deal(sf::RenderWindow*, std::vector<Card*>);
+	Deal(sf::RenderWindow*, std::vector<Card*>, sf::Font);
 	virtual ~Deal();
 
 	void checkHand();
@@ -46,5 +49,6 @@ public:
 	void updateButtons();
 	void updateHand();
 	void update();
+	void renderButtons(sf::RenderTarget*);
 	void render(sf::RenderTarget*);
 };
