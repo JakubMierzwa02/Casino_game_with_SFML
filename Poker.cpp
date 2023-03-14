@@ -220,7 +220,7 @@ Poker::~Poker()
 
 bool Poker::canPlay()
 {
-	if (this->counter < 100)
+	if (this->counter < 100 || this->money == 0)
 	{
 		this->counter++;
 		return false;
@@ -255,7 +255,7 @@ void Poker::updateButtons()
 			// Change hand
 			this->deal->updateHand();
 
-			this->deal->checkHand();
+			this->updateMoney();
 			this->counter = 0;
 			this->check = true;
 			this->change = false;

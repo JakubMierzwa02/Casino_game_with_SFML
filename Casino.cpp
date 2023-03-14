@@ -4,7 +4,14 @@ void Casino::initWindow()
 {
 	srand(time(NULL));
 
-	this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Casino game", sf::Style::Fullscreen);
+	this->name = "Casino";
+	this->window_width = 1920;
+	this->window_height = 1080;
+	this->fps = 120;
+	this->videoMode = sf::VideoMode(this->window_width, this->window_height);
+
+	this->window = new sf::RenderWindow(this->videoMode, this->name, sf::Style::Fullscreen);
+	this->window->setFramerateLimit(fps);
 }
 
 void Casino::initPhase()
