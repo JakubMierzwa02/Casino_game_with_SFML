@@ -27,6 +27,12 @@ private:
 	std::map<std::string, Button*> buttons;
 	std::vector<bool> isChecked;
 
+	// Payment
+	int coin;
+	int wager;
+	int multiplier;
+	int payout;
+
 	// Logic
 	int counter;
 
@@ -37,10 +43,10 @@ private:
 	void initButtons();
 
 public:
-	Deal(sf::RenderWindow*, std::vector<Card*>, sf::Font);
+	Deal(sf::RenderWindow*, std::vector<Card*>, int, int, sf::Font);
 	virtual ~Deal();
 
-	void checkHand();
+	const int checkHand();
 
 	bool canPress();
 

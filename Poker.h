@@ -17,6 +17,12 @@ private:
 	// Font
 	sf::Font font;
 
+	// GUI
+	sf::Text payoutText;
+	sf::Text moneyText;
+	sf::Text coinText;
+	sf::Text wagerText;
+
 	// Buttons
 	std::map<std::string, Button*> buttons;
 
@@ -29,6 +35,7 @@ private:
 
 	// Logic
 	int counter;
+	int money;
 	bool change;
 	bool check;
 
@@ -39,6 +46,7 @@ private:
 	void initCards();
 	void initCardBacks();
 	void initButtons();
+	void initGui();
 	void initDeal();
 
 public:
@@ -49,8 +57,11 @@ public:
 	bool canPlay();
 
 	// Functions
+	void updateMoney();
 	void updateButtons();
+	void updateGui();
 	void update();
 	void renderButtons(sf::RenderTarget*);
+	void renderGui(sf::RenderTarget*);
 	void render(sf::RenderTarget*);
 };

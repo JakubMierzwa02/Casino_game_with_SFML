@@ -65,8 +65,8 @@ void Deal::initButtons()
 }
 
 
-Deal::Deal(sf::RenderWindow* window, std::vector<Card*> cards, sf::Font font)
-	: window(window), cards(cards), font(font)
+Deal::Deal(sf::RenderWindow* window, std::vector<Card*> cards, int coin, int wager, sf::Font font)
+	: window(window), cards(cards), coin(coin), wager(wager), font(font)
 {
 	this->initVariables();
 	this->initHandCards();
@@ -80,44 +80,52 @@ Deal::~Deal()
 }
 
 
-void Deal::checkHand()
+const int Deal::checkHand()
 {
+	this->multiplier = -5;
+	this->payout = 0;
+
 	if (this->hand->straight_flush())
 	{
-		std::cout << "Straight flush!" << '\n';
+		this->multiplier = 250;
 	}
 	else if (this->hand->four_of_a_kind())
 	{
-		std::cout << "Four of a kind!" << '\n';
+		this->multiplier = 125;
 	}
 	else if (this->hand->full_house())
 	{
-		std::cout << "Full house" << '\n';
+		this->multiplier = 45;
 	}
 	else if (this->hand->flush())
 	{
-		std::cout << "Flush" << '\n';
+		this->multiplier = 30;
 	}
 	else if (this->hand->straight())
 	{
-		std::cout << "Straight" << '\n';
+		this->multiplier = 20;
 	}
 	else if (this->hand->three_of_a_kind())
 	{
-		std::cout << "Three of a kind" << '\n';
+		this->multiplier = 15;
 	}
 	else if (this->hand->two_pairs())
 	{
-		std::cout << "Two pairs" << '\n';
+		this->multiplier = 10;
 	}
 	else if (this->hand->jacks_or_better())
 	{
-		std::cout << "Jacks or better" << '\n';
+		this->multiplier = 5;
 	}
 	else
 	{
-		std::cout << "High card" << '\n';
+		this->multiplier = 0;
 	}
+
+	this->payout += this->coin * this->multiplier;
+	this->payout -= this->wager;
+
+	return this->payout;
 }
 
 bool Deal::canPress()
