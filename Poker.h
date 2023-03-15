@@ -60,7 +60,7 @@ public:
 	void updateMoney();
 	void updateButtons();
 	void updateGui();
-	void update();
+	void update(const float&);
 	void renderButtons(sf::RenderTarget*);
 	void renderGui(sf::RenderTarget*);
 	void render(sf::RenderTarget*);

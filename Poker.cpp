@@ -10,67 +10,72 @@ void Poker::initVariables()
 
 void Poker::initTextures()
 {
-	for (int i = 0; i < 53; i++)
-		this->textures.push_back(new sf::Texture());
+	const std::vector<std::string> paths{
+		"2_of_clubs.png",
+		"3_of_clubs.png",
+		"4_of_clubs.png",
+		"5_of_clubs.png",
+		"6_of_clubs.png",
+		"7_of_clubs.png",
+		"8_of_clubs.png",
+		"9_of_clubs.png",
+		"10_of_clubs.png",
+		"jack_of_clubs.png",
+		"queen_of_clubs.png",
+		"king_of_clubs.png",
+		"ace_of_clubs.png",
+		"2_of_spades.png",
+		"3_of_spades.png",
+		"4_of_spades.png",
+		"5_of_spades.png",
+		"6_of_spades.png",
+		"7_of_spades.png",
+		"8_of_spades.png",
+		"9_of_spades.png",
+		"10_of_spades.png",
+		"jack_of_spades.png",
+		"queen_of_spades.png",
+		"king_of_spades.png",
+		"ace_of_spades.png",
+		"2_of_diamonds.png",
+		"3_of_diamonds.png",
+		"4_of_diamonds.png",
+		"5_of_diamonds.png",
+		"6_of_diamonds.png",
+		"7_of_diamonds.png",
+		"8_of_diamonds.png",
+		"9_of_diamonds.png",
+		"10_of_diamonds.png",
+		"jack_of_diamonds.png",
+		"queen_of_diamonds.png",
+		"king_of_diamonds.png",
+		"ace_of_diamonds.png",
+		"2_of_hearts.png",
+		"3_of_hearts.png",
+		"4_of_hearts.png",
+		"5_of_hearts.png",
+		"6_of_hearts.png",
+		"7_of_hearts.png",
+		"8_of_hearts.png",
+		"9_of_hearts.png",
+		"10_of_hearts.png",
+		"jack_of_hearts.png",
+		"queen_of_hearts.png",
+		"king_of_hearts.png",
+		"ace_of_hearts.png",
+		"cardBack.png"
+	};
 
 	// Load textures
-	this->textures[0]->loadFromFile("Resources/Cards/2_of_clubs.png");
-	this->textures[1]->loadFromFile("Resources/Cards/3_of_clubs.png");
-	this->textures[2]->loadFromFile("Resources/Cards/4_of_clubs.png");
-	this->textures[3]->loadFromFile("Resources/Cards/5_of_clubs.png");
-	this->textures[4]->loadFromFile("Resources/Cards/6_of_clubs.png");
-	this->textures[5]->loadFromFile("Resources/Cards/7_of_clubs.png");
-	this->textures[6]->loadFromFile("Resources/Cards/8_of_clubs.png");
-	this->textures[7]->loadFromFile("Resources/Cards/9_of_clubs.png");
-	this->textures[8]->loadFromFile("Resources/Cards/10_of_clubs.png");
-	this->textures[9]->loadFromFile("Resources/Cards/jack_of_clubs.png");
-	this->textures[10]->loadFromFile("Resources/Cards/queen_of_clubs.png");
-	this->textures[11]->loadFromFile("Resources/Cards/king_of_clubs.png");
-	this->textures[12]->loadFromFile("Resources/Cards/ace_of_clubs.png");
-
-	this->textures[13]->loadFromFile("Resources/Cards/2_of_spades.png");
-	this->textures[14]->loadFromFile("Resources/Cards/3_of_spades.png");
-	this->textures[15]->loadFromFile("Resources/Cards/4_of_spades.png");
-	this->textures[16]->loadFromFile("Resources/Cards/5_of_spades.png");
-	this->textures[17]->loadFromFile("Resources/Cards/6_of_spades.png");
-	this->textures[18]->loadFromFile("Resources/Cards/7_of_spades.png");
-	this->textures[19]->loadFromFile("Resources/Cards/8_of_spades.png");
-	this->textures[20]->loadFromFile("Resources/Cards/9_of_spades.png");
-	this->textures[21]->loadFromFile("Resources/Cards/10_of_spades.png");
-	this->textures[22]->loadFromFile("Resources/Cards/jack_of_spades.png");
-	this->textures[23]->loadFromFile("Resources/Cards/queen_of_spades.png");
-	this->textures[24]->loadFromFile("Resources/Cards/king_of_spades.png");
-	this->textures[25]->loadFromFile("Resources/Cards/ace_of_spades.png");
-
-	this->textures[26]->loadFromFile("Resources/Cards/2_of_diamonds.png");
-	this->textures[27]->loadFromFile("Resources/Cards/3_of_diamonds.png");
-	this->textures[28]->loadFromFile("Resources/Cards/4_of_diamonds.png");
-	this->textures[29]->loadFromFile("Resources/Cards/5_of_diamonds.png");
-	this->textures[30]->loadFromFile("Resources/Cards/6_of_diamonds.png");
-	this->textures[31]->loadFromFile("Resources/Cards/7_of_diamonds.png");
-	this->textures[32]->loadFromFile("Resources/Cards/8_of_diamonds.png");
-	this->textures[33]->loadFromFile("Resources/Cards/9_of_diamonds.png");
-	this->textures[34]->loadFromFile("Resources/Cards/10_of_diamonds.png");
-	this->textures[35]->loadFromFile("Resources/Cards/jack_of_diamonds.png");
-	this->textures[36]->loadFromFile("Resources/Cards/queen_of_diamonds.png");
-	this->textures[37]->loadFromFile("Resources/Cards/king_of_diamonds.png");
-	this->textures[38]->loadFromFile("Resources/Cards/ace_of_diamonds.png");
-
-	this->textures[39]->loadFromFile("Resources/Cards/2_of_hearts.png");
-	this->textures[40]->loadFromFile("Resources/Cards/3_of_hearts.png");
-	this->textures[41]->loadFromFile("Resources/Cards/4_of_hearts.png");
-	this->textures[42]->loadFromFile("Resources/Cards/5_of_hearts.png");
-	this->textures[43]->loadFromFile("Resources/Cards/6_of_hearts.png");
-	this->textures[44]->loadFromFile("Resources/Cards/7_of_hearts.png");
-	this->textures[45]->loadFromFile("Resources/Cards/8_of_hearts.png");
-	this->textures[46]->loadFromFile("Resources/Cards/9_of_hearts.png");
-	this->textures[47]->loadFromFile("Resources/Cards/10_of_hearts.png");
-	this->textures[48]->loadFromFile("Resources/Cards/jack_of_hearts.png");
-	this->textures[49]->loadFromFile("Resources/Cards/queen_of_hearts.png");
-	this->textures[50]->loadFromFile("Resources/Cards/king_of_hearts.png");
-	this->textures[51]->loadFromFile("Resources/Cards/ace_of_hearts.png");
-
-	this->textures[52]->loadFromFile("Resources/Cards/cardBack.png");
+	textures.resize(53);
+	for (int i = 0; i < 53; i++)
+	{
+		this->textures[i] = new sf::Texture();
+		if (!textures[i]->loadFromFile("Resources/Cards/" + paths[i]))
+		{
+			throw "Could not load " + paths[i] + " file";
+		}
+	}
 
 	// Init background
 	if (!this->backgroundTex.loadFromFile("Resources/background.jpg"))
@@ -220,7 +225,7 @@ Poker::~Poker()
 
 bool Poker::canPlay()
 {
-	if (this->counter < 100 || this->money == 0)
+	if (this->counter < 30 || this->money == 0)
 	{
 		this->counter++;
 		return false;
@@ -283,7 +288,7 @@ void Poker::updateGui()
 	this->moneyText.setString("Cash: $" + std::to_string(this->money));
 }
 
-void Poker::update()
+void Poker::update(const float& dt)
 {
 	this->updateMousePositions();
 	this->updateButtons();

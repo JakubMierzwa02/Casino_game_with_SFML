@@ -41,6 +41,12 @@ void Casino::pollEvents()
 	}
 }
 
+void Casino::updateDt()
+{
+	// Updates the dt variable with the time it takes to update and render one frame
+	this->dt = this->clock.restart().asSeconds();
+}
+
 void Casino::update()
 {
 	this->pollEvents();
@@ -48,7 +54,7 @@ void Casino::update()
 	// Update phases
 	if (!this->phases.empty())
 	{
-		this->phases.top()->update();
+		this->phases.top()->update(this->dt);
 		if (this->phases.top()->getQuit())
 		{
 			this->phases.top()->endPhase();
@@ -80,6 +86,7 @@ void Casino::run()
 	// Main loop
 	while (this->window->isOpen())
 	{
+		this->updateDt();
 		this->update();
 		this->render();
 	}

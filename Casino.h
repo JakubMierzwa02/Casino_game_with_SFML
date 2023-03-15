@@ -16,6 +16,10 @@ private:
 	// Events
 	sf::Event ev;
 
+	// Clock
+	sf::Clock clock;
+	float dt;
+
 	// Phases
 	std::stack<Phase*> phases;
 
@@ -30,6 +34,7 @@ public:
 
 	// Functions
 	void pollEvents();
+	void updateDt();
 
 	void update();
 	void render();

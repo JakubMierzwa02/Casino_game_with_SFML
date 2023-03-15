@@ -110,7 +110,7 @@ bool Hand::straight_flush()
 	return (this->flush() && this->straight());
 }
 
-void Hand::update()
+void Hand::update(const float& dt)
 {
 
 }

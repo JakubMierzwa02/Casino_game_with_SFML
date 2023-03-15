@@ -37,6 +37,6 @@ public:
 	void endPhase();
 
 	void updateMousePositions();
-	virtual void update() = 0;
+	virtual void update(const float& dt) = 0;
 	virtual void render(sf::RenderTarget* target = nullptr) = 0;
 };
