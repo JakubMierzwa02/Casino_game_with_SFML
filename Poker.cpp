@@ -10,7 +10,8 @@ void Poker::initVariables()
 
 void Poker::initTextures()
 {
-	const std::vector<std::string> paths{
+	const std::vector<std::string> paths
+	{
 		"2_of_clubs.png",
 		"3_of_clubs.png",
 		"4_of_clubs.png",
@@ -119,20 +120,16 @@ void Poker::initCards()
 
 void Poker::initCardBacks()
 {
-	for (size_t i = 0; i < 5; i++)
-	{
-		this->cardBacks.push_back(sf::Sprite(*this->textures[52]));
-	}
-	this->cardBacks[0].setScale(1.4f, 1.4f);
-	this->cardBacks[0].setPosition(210.f, 530.f);
+	const float scale = 1.4f;
+	const float x = 210.f;
+	const float y = 530.f;
 
-	float pos = 210.f + this->cardBacks[0].getGlobalBounds().width + 100.f;
-	for (size_t i = 1; i < 5; i++)
-	{
-		this->cardBacks[i].setScale(1.4f, 1.4f);
-		this->cardBacks[i].setPosition(pos, 530.f);
-		pos += this->cardBacks[0].getGlobalBounds().width + 100.f;
+	for (size_t i = 0; i < 5; ++i) {
+		this->cardBacks.push_back(sf::Sprite(*this->textures[52]));
+		this->cardBacks[i].setScale(scale, scale);
+		this->cardBacks[i].setPosition(x + i * (cardBacks[0].getGlobalBounds().width + 100.f), y);
 	}
+	this->cardBacks[0].setPosition(x, y);
 }
 
 void Poker::initButtons()
