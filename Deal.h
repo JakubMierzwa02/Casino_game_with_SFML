@@ -3,6 +3,9 @@
 #include "Hand.h"
 #include "Button.h"
 
+#include <array>
+#include <random>
+
 class Deal
 {
 private:
@@ -25,7 +28,7 @@ private:
 
 	// Buttons
 	std::map<std::string, Button*> buttons;
-	std::vector<bool> isChecked;
+	std::array<bool, 5> isChecked;
 
 	// Payment
 	int coin;

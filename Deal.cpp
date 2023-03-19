@@ -6,32 +6,18 @@ void Deal::initVariables()
 
 	for (size_t i = 0; i < 5; i++)
 	{
-		this->isChecked.push_back(false);
+		this->isChecked[i] = false;
 	}
 }
 
 void Deal::initHandCards()
 {
-	// Check if the card is duplicated
+	std::shuffle(cards.begin(), cards.end(), std::default_random_engine(std::random_device()()));
+
 	for (int i = 0; i < 5; i++)
 	{
-		this->handCards.push_back(this->cards[std::rand() % 51 + 1]);
-		for (int j = i - 1; j >= 0 && i > 0; j--)
-		{
-			if ((this->handCards[j]->getValue() == this->handCards[i]->getValue())
-				&& (this->handCards[j]->getColor() == this->handCards[i]->getColor()))
-			{
-				this->handCards.erase(this->handCards.begin() + i);
-				i--;
-				break;
-			}
-		}
-	}
-
-	// Init used cards
-	for (size_t i = 0; i < 5; i++)
-	{
-		this->usedCards.push_back(*this->handCards[i]);
+		handCards.push_back(cards[i]);
+		usedCards.push_back(*cards[i]);
 	}
 }
 

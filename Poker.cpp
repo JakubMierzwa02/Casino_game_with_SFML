@@ -94,27 +94,12 @@ void Poker::initFont()
 void Poker::initCards()
 {
 	int i = 0;
-	
-	// Create cards
-	for (int j = 2; j <= 14; j++)
+	for (const auto& suit : { CLUBS, SPADES, DIAMONDS, HEARTS }) 
 	{
-		this->cards.push_back(new Card(*this->textures[i], j, CLUBS));
-		i++;
-	}
-	for (int j = 2; j <= 14; j++)
-	{
-		this->cards.push_back(new Card(*this->textures[i], j, SPADES));
-		i++;
-	}
-	for (int j = 2; j <= 14; j++)
-	{
-		this->cards.push_back(new Card(*this->textures[i], j, DIAMONDS));
-		i++;
-	}
-	for (int j = 2; j <= 14; j++)
-	{
-		this->cards.push_back(new Card(*this->textures[i], j, HEARTS));
-		i++;
+		for (int j = 2; j <= 14; j++) 
+		{
+			this->cards.push_back(new Card(*this->textures[i++], j, suit));
+		}
 	}
 }
 
@@ -124,7 +109,8 @@ void Poker::initCardBacks()
 	const float x = 210.f;
 	const float y = 530.f;
 
-	for (size_t i = 0; i < 5; ++i) {
+	for (size_t i = 0; i < 5; ++i) 
+	{
 		this->cardBacks.push_back(sf::Sprite(*this->textures[52]));
 		this->cardBacks[i].setScale(scale, scale);
 		this->cardBacks[i].setPosition(x + i * (cardBacks[0].getGlobalBounds().width + 100.f), y);
