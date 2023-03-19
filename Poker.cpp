@@ -134,53 +134,57 @@ void Poker::initCardBacks()
 
 void Poker::initButtons()
 {
-	this->buttons["DEAL"] = new Button(50.f, this->window->getSize().y - 132.f, 150.f, 92.f,
+	this->buttons.emplace("DEAL", new Button(50.f, this->window->getSize().y - 132.f, 150.f, 92.f,
 		this->font, "Deal",
-		sf::Color(207, 27, 27), sf::Color(171, 32, 32), sf::Color(128, 33, 33));
+		sf::Color(207, 27, 27), sf::Color(171, 32, 32), sf::Color(128, 33, 33)));
 
-	this->buttons["EXIT"] = new Button(250.f, this->window->getSize().y - 132.f, 150.f, 92.f,
+	this->buttons.emplace("EXIT", new Button(250.f, this->window->getSize().y - 132.f, 150.f, 92.f,
 		this->font, "Exit",
-		sf::Color(207, 27, 27), sf::Color(171, 32, 32), sf::Color(128, 33, 33));
+		sf::Color(207, 27, 27), sf::Color(171, 32, 32), sf::Color(128, 33, 33)));
 }
 
 void Poker::initGui()
 {
 	// Payout text
-	this->payoutText.setFont(this->font);
-	this->payoutText.setFillColor(sf::Color::Yellow);
-	this->payoutText.setOutlineColor(sf::Color::Black);
-	this->payoutText.setOutlineThickness(3);
-	this->payoutText.setCharacterSize(62);
-	this->payoutText.setPosition(this->window->getSize().x / 2.f - this->payoutText.getGlobalBounds().width - 150.f,
-		this->window->getSize().y - this->payoutText.getGlobalBounds().height - 110.f);
+	this->texts.emplace("PAYOUT", new sf::Text());
+	this->texts.at("PAYOUT")->setFont(this->font);
+	this->texts.at("PAYOUT")->setFillColor(sf::Color::Yellow);
+	this->texts.at("PAYOUT")->setOutlineColor(sf::Color::Black);
+	this->texts.at("PAYOUT")->setOutlineThickness(3);
+	this->texts.at("PAYOUT")->setCharacterSize(62);
+	this->texts.at("PAYOUT")->setPosition(this->window->getSize().x / 2.f - this->texts.at("PAYOUT")->getGlobalBounds().width - 150.f,
+		this->window->getSize().y - this->texts.at("PAYOUT")->getGlobalBounds().height - 110.f);
 
 	// Money text
-	this->moneyText.setFont(this->font);
-	this->moneyText.setFillColor(sf::Color::Yellow);
-	this->moneyText.setOutlineColor(sf::Color::Black);
-	this->moneyText.setOutlineThickness(3);
-	this->moneyText.setCharacterSize(54);
-	this->moneyText.setPosition(this->window->getSize().x - this->moneyText.getGlobalBounds().width - 400.f,
-		this->window->getSize().y - this->moneyText.getGlobalBounds().height - 100.f);
-	this->moneyText.setString("Cash: $" + std::to_string(this->money));
+	this->texts.emplace("MONEY", new sf::Text());
+	this->texts.at("MONEY")->setFont(this->font);
+	this->texts.at("MONEY")->setFillColor(sf::Color::Yellow);
+	this->texts.at("MONEY")->setOutlineColor(sf::Color::Black);
+	this->texts.at("MONEY")->setOutlineThickness(3);
+	this->texts.at("MONEY")->setCharacterSize(54);
+	this->texts.at("MONEY")->setPosition(this->window->getSize().x - this->texts.at("MONEY")->getGlobalBounds().width - 400.f,
+		this->window->getSize().y - this->texts.at("MONEY")->getGlobalBounds().height - 100.f);
+	this->texts.at("MONEY")->setString("Cash: $" + std::to_string(this->money));
 
 	// Coin text
-	this->coinText.setFont(this->font);
-	this->coinText.setFillColor(sf::Color::Yellow);
-	this->coinText.setOutlineColor(sf::Color::Black);
-	this->coinText.setOutlineThickness(3);
-	this->coinText.setCharacterSize(54);
-	this->coinText.setPosition(this->window->getSize().x - this->coinText.getGlobalBounds().width - 350.f, 50.f);
-	this->coinText.setString("Coin value: \n \t $100");
+	this->texts.emplace("COIN", new sf::Text());
+	this->texts.at("COIN")->setFont(this->font);
+	this->texts.at("COIN")->setFillColor(sf::Color::Yellow);
+	this->texts.at("COIN")->setOutlineColor(sf::Color::Black);
+	this->texts.at("COIN")->setOutlineThickness(3);
+	this->texts.at("COIN")->setCharacterSize(54);
+	this->texts.at("COIN")->setPosition(this->window->getSize().x - this->texts.at("COIN")->getGlobalBounds().width - 350.f, 50.f);
+	this->texts.at("COIN")->setString("Coin value: \n \t $100");
 
 	// Wager text
-	this->wagerText.setFont(this->font);
-	this->wagerText.setFillColor(sf::Color::Yellow);
-	this->wagerText.setOutlineColor(sf::Color::Black);
-	this->wagerText.setOutlineThickness(3);
-	this->wagerText.setCharacterSize(54);
-	this->wagerText.setPosition(this->window->getSize().x - this->wagerText.getGlobalBounds().width - 300.f, 200.f);
-	this->wagerText.setString("Wager: \n  $500");
+	this->texts.emplace("WAGER", new sf::Text());
+	this->texts.at("WAGER")->setFont(this->font);
+	this->texts.at("WAGER")->setFillColor(sf::Color::Yellow);
+	this->texts.at("WAGER")->setOutlineColor(sf::Color::Black);
+	this->texts.at("WAGER")->setOutlineThickness(3);
+	this->texts.at("WAGER")->setCharacterSize(54);
+	this->texts.at("WAGER")->setPosition(this->window->getSize().x - this->texts.at("WAGER")->getGlobalBounds().width - 300.f, 200.f);
+	this->texts.at("WAGER")->setString("Wager: \n  $500");
 }
 
 void Poker::initDeal()
@@ -203,17 +207,22 @@ Poker::Poker(sf::RenderWindow* window, std::stack<Phase*>* phases)
 
 Poker::~Poker()
 {
-	for (size_t i = 0; i < this->textures.size(); i++)
+	for (auto& texture : this->textures)
 	{
-		delete this->textures[i];
+		delete texture;
 	}
 
-	for (size_t i = 0; i < this->cards.size(); i++)
+	for (auto& card : this->cards)
 	{
-		delete this->cards[i];
+		delete card;
 	}
 
-	for (auto it = this->buttons.begin(); it != this->buttons.end(); ++it)
+	for (auto& button : this->buttons)
+	{
+		delete button.second;
+	}
+
+	for (auto it = this->texts.begin(); it != this->texts.end(); ++it)
 	{
 		delete it->second;
 	}
@@ -273,16 +282,16 @@ void Poker::updateButtons()
 	}
 
 	// Quit phase
-	if (this->buttons["EXIT"]->isPressed())
+	if (this->buttons.at("EXIT")->isPressed())
 		this->endPhase();
 }
 
 void Poker::updateGui()
 {
 	if (this->check)
-		this->payoutText.setString("Payout: $" + std::to_string(this->deal->checkHand() + 500));
+		this->texts["PAYOUT"]->setString("Payout: $" + std::to_string(this->deal->checkHand() + 500));
 
-	this->moneyText.setString("Cash: $" + std::to_string(this->money));
+	this->texts["MONEY"]->setString("Cash: $" + std::to_string(this->money));
 }
 
 void Poker::update(const float& dt)
@@ -306,11 +315,11 @@ void Poker::renderButtons(sf::RenderTarget* target)
 void Poker::renderGui(sf::RenderTarget* target)
 {
 	if (this->check)
-		target->draw(this->payoutText);
+		target->draw(*this->texts["PAYOUT"]);
 
-	target->draw(this->moneyText);
-	target->draw(this->coinText);
-	target->draw(this->wagerText);
+	target->draw(*this->texts["MONEY"]);
+	target->draw(*this->texts["COIN"]);
+	target->draw(*this->texts["WAGER"]);
 }
 
 void Poker::render(sf::RenderTarget* target)

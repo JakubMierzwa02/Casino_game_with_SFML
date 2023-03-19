@@ -18,10 +18,7 @@ private:
 	sf::Font font;
 
 	// GUI
-	sf::Text payoutText;
-	sf::Text moneyText;
-	sf::Text coinText;
-	sf::Text wagerText;
+	std::map<std::string, sf::Text*> texts;
 
 	// Buttons
 	std::map<std::string, Button*> buttons;
