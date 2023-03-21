@@ -131,6 +131,9 @@ void Poker::initButtons()
 
 void Poker::initGui()
 {
+	// Hand table
+	this->handTable = std::unique_ptr<HandTable> (new HandTable(50.f, 50.f, 1000.f, 350.f, this->font));
+
 	// Payout text
 	this->texts.emplace("PAYOUT", new sf::Text());
 	this->texts.at("PAYOUT")->setFont(this->font);
@@ -300,6 +303,8 @@ void Poker::renderButtons(sf::RenderTarget* target)
 
 void Poker::renderGui(sf::RenderTarget* target)
 {
+	this->handTable->render(target);
+
 	if (this->check)
 		target->draw(*this->texts["PAYOUT"]);
 

@@ -3,6 +3,7 @@
 #include "Phase.h"
 #include "Deal.h"
 #include "Card.h"
+#include "HandTable.h"
 
 class Poker : public Phase
 {
@@ -18,6 +19,7 @@ private:
 	sf::Font font;
 
 	// GUI
+	std::unique_ptr<HandTable> handTable;
 	std::map<std::string, sf::Text*> texts;
 
 	// Buttons

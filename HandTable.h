@@ -11,6 +11,8 @@ private:
 
 	sf::Font font;
 	sf::Text info;
+	sf::Text handText;
+	sf::Text coinText;
 
 	// Initializer functions
 	void initText();
