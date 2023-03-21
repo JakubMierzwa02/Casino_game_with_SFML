@@ -23,6 +23,8 @@ Deal.h
 Deal.cpp
 Button.h
 Button.cpp
+HandTable.h
+HandTable.cpp
 )
 
 # Link our executable to SFML and its dependencies
